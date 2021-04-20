@@ -1,51 +1,38 @@
 "use strict";
-const https = require("https");
-const URL = "https://rickandmortyapi.com/api/character/";
-const microprofiler = require('microprofiler');
+const microprofiler = require("microprofiler");
+const charCounter = require('./src/Controllers/charCounter');
+const episodeLocation = require('./src/Controllers/episodeLocations');
 
-function getInfo() {
-  let currentPage = 0;
-  let results=[];
-  function loadNextPage(){
-    currentPage++;
-    return new Promise((resolve, reject) => {
-        https.get(URL + `?page=${currentPage}`, (res) => {
-            if (res.statusCode === 200) {
-                let rawData = '';
-                res.on('data', chunk => {
-                    rawData += chunk;
-                });
-                res.on('end', () => {
-                    const parsedData = JSON.parse(rawData);
-                    results.splice(-1, 0, ...parsedData.results);
-                    const parsedTotalPages = parseInt(parsedData.info.pages);
-                    if(!isNaN(parsedTotalPages) && currentPage < parsedTotalPages)
-                        loadNextPage();
-                    else{
-                        resolve(results)
-                    }
-                });
-                //resolve(JSON.parse(body));
-            } else {
-                resolve("Code: " + res.statusCode + " " + res.statusMessage);
-            }
-        });
-    });
-  }
-  return loadNextPage();
+/**
+ * To try a challenge, please comment the other one for a better answer in console
+ */
+const main = () => {
+    //challenge1();
+    challenge2();
 }
 
-async function main() {
-  const info = await getInfo();
-  if (typeof info != "string") {
-    console.log("Apis conectadas");
-    //APLICAR LOGICA
-  } else {
-    if (typeof info == "string") console.warn("La api falla " + info);
-  }
+const challenge1 = async () => {
+    const start = microprofiler.start();
+    const charLCount = await charCounter.getCountLocations();
+    const charECount = await charCounter.getCountEpisode();
+    const charCCount = await charCounter.getCountCharacter();
+    console.log('There are '+charLCount+' L letters in the names of Locations');
+    console.log('There are '+charCCount+' C letters in the names of Characters');
+    console.log('There are '+charECount+' E letters in the names of Episodes');
+    const timeOut = microprofiler.measureFrom(start);
+    console.log(timeOut + " Microseconds for the CharCounterChallenge");
 }
 
-var start = microprofiler.start();
+const challenge2 = async () => {
+    const start = microprofiler.start();
+    const eLocation = await episodeLocation.eLocation();
+    console.log(eLocation);
+    const timeOut = microprofiler.measureFrom(start);
+    console.log(timeOut + " Microseconds for the CharCounterChallenge");
+}
+
+
+
 main();
-var elapsedUs = microprofiler.measureFrom(start);
-console.log(elapsedUs);
+
+
