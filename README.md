@@ -14,9 +14,6 @@ Primero que todo comentar los desafíos propuestos.
     - para cada `episode`, indicar la cantidad y un listado con las `location` (`origin`) de todos los `character` que aparecieron en ese `episode` (sin repetir)
     - cuánto tardó el programa 👆 en total (desde inicio ejecución hasta entrega de resultados)
 
-Cabe destacar que el programa se demora al rededor de 15 segundos en funcionar, esto ya que no pude solucionar la eficiencia del consumo de la api, ya que debía leer
-muchas páginas de información.
-
 
 ### Pre-requisitos 📋
 
@@ -50,8 +47,6 @@ y en la función main() commente el challenge que no desee visualizar.
 las respuestas de los desafíos aparece por consola.
 
 ## Construido con 🛠️
-
-_Menciona las herramientas que utilizaste para crear tu proyecto_
 
 * [node](https://nodejs.dev/) - El framework web usado
 
