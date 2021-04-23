@@ -15,7 +15,8 @@ module.exports = async URL => {
             .catch(err => {
               console.log(err);
             });
-    return results.reduce((acc,el)=>acc.concat(el),[]);      
+    if(results.length > 0) return results.reduce((acc,el)=>acc.concat(el),[]);
+    else return "Ouch something is wrong with the requests";      
   }
 const getUrls = (totalPages,URL) => {
     let arr=[];

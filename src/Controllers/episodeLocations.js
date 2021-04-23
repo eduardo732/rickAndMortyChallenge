@@ -13,7 +13,7 @@ const controller = {
                 let count = index + 1;
                 let id=getCharacterId(item);
                 let aux = infoCharacters.find(data => data.id == id);
-                return count+'- Name: '+aux.name+', originName: '+aux.origin.name;
+                return `${count}- Name: ${aux.name}, originName: ${aux.origin.name}`;
             });
         });
         return hashArray;
