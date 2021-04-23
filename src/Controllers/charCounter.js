@@ -6,32 +6,17 @@ const controller = {
   getCountLocations: async () => {
       const data = await characters;
       if(!data) return "A problem has occurred, please check the Api Url.";
-      let result = 0;
-      data.reduce((acc, el) => {
-        result += repeated(el.location.name, 'l');
-      });
-      //console.log('locations name '+result)
-      return result; 
+      return getDataReduce(data, 'l');
   },
   getCountCharacter: async () => {
     const data = await characters;
     if(!data) return "A problem has occurred, please check the Api Url.";
-    let result = 0;
-    data.reduce((acc, el) => {
-      result += repeated(el.name, 'c');
-    });
-    //console.log('Characters name '+result)
-    return result; 
+    return getDataReduce(data, 'l');
   },
   getCountEpisode: async () => {
     const data = await episodes;
     if(!data) return "A problem has occurred, please check the Api Url.";
-    let result = 0;
-    data.reduce((acc, el) => {
-      result += repeated(el.name, 'e');
-    });
-    //console.log('Episodes name '+result)
-    return result; 
+    return getDataReduce(data, 'l');
   }
 }
 const normalize = word => {
@@ -54,6 +39,13 @@ const repeated = (str, letter)=>{
   
 };
 
+const getDataReduce = (data,letter) => {
+  let result = 0;
+  data.reduce((acc, el) => {
+    result += repeated(el.location.name, letter);
+  });
+  return result;
+}
 
 
 
