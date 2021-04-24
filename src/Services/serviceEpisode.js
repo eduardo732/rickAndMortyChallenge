@@ -1,6 +1,6 @@
 "use strict";
 const URL = "https://rickandmortyapi.com/api/episode/";
-const helper = require('../helpers/serviceHelpers');
+const helper = require('../Helpers/serviceHelpers');
 // Get info for each page in the Rick and Morty Api
 const getEpisodes = async () => {
   return await helper(URL);

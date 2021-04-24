@@ -39,10 +39,18 @@ o bien si quiere ejecutar cada archivo por separado, debe escribir:
 
 ## Despliegue 📦
 
-Para ejecutar el proyecto en si debe ingresar en la consola "node index.js".
+Para ejecutar el proyecto en si debe ingresar en la consola "npm start".
 
-recomiendo que para mejor lectura de las respuestas, se diriga al archivo index.js
-y en la función main() commente el challenge que no desee visualizar.
+Se inicia el servidor y se puede probar con las siguientes url
+(https://localhost:8080)
+
+//charCounter controller
+router.get('/getLocations', charCounter.controller.getCountLocations);
+router.get('/getCharacters', charCounter.controller.getCountCharacter);
+router.get('/getEpisodes', charCounter.controller.getCountEpisode);
+
+//episodeLocation controller
+router.get('/episodeLocation', episodeLocation.eLocation);
 
 las respuestas de los desafíos aparece por consola.
 

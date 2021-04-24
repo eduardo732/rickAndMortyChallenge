@@ -2,22 +2,26 @@ const characters = require("../Services/serviceCharacter");
 const episodes = require("../Services/serviceEpisode");
 
 const controller = {
-  getCountLocations: async () => {
+  getCountLocations: async (req, res) => {
     const data = await characters;
-    if (!data) return "A problem has occurred, please check the Api Url.";
-    return getDataReduce(data, "l", "location.name");
+    if (!data) res.status(500).send({message: "A problem has occurred, please check the Api Url."});
+    const resp = getDataReduce(data, "l", "location.name");
+    res.status(200).send({message: `There are ${resp} L letters in the names of Locations`});
   },
-  getCountCharacter: async () => {
+  getCountCharacter: async (req, res) => {
     const data = await characters;
-    if (!data) return "A problem has occurred, please check the Api Url.";
-    return getDataReduce(data, "c", "name");
+    if (!data) res.status(500).send({message: "A problem has occurred, please check the Api Url."});
+    const resp = getDataReduce(data, "c", "name");
+    res.status(200).send({message: `There are ${resp} C letters in the names of Characters`});
   },
-  getCountEpisode: async () => {
+  getCountEpisode: async (req, res) => {
     const dataE = await episodes;
-    if (!dataE) return "A problem has occurred, please check the Api Url.";
-    return getDataReduce(dataE, "e", "name");
+    if (!dataE) return res.status(500).send({message: "A problem has occurred, please check the Api Url."});
+    const resp = getDataReduce(dataE, "e", "name");
+    res.status(200).send({message: `There are ${resp} C letters in the names of Episodes`});
   },
 };
+
 const normalize = (word) => {
   return word.toLowerCase().replace(/[.!,]/g, "");
 };

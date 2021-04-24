@@ -3,10 +3,10 @@ const characters =  require('../Services/serviceCharacter');
 const episodes = require('../Services/serviceEpisode');
 
 const controller = {
-    eLocation: async () => {
+    eLocation: async (req, res) => {
         const infoCharacters = await characters;
         const infoEpisodes = await episodes;
-        if(!infoCharacters || !infoEpisodes) return "A problem has occurred, please check the Api Url.";
+        if(!infoCharacters || !infoEpisodes) res.status(500).send({message: "A problem has occurred, please check the Api Url."});
         let hashArray = getHash(infoEpisodes);
         hashArray.forEach(element => {
             element[1] = element[1].map((item,index) => {
@@ -16,7 +16,7 @@ const controller = {
                 return `${count}- Name: ${aux.name}, originName: ${aux.origin.name}`;
             });
         });
-        return hashArray;
+        res.status(200).send(hashArray);
     }
     
 }

@@ -1,5 +1,5 @@
 "use strict";
-const helper = require('../src/helpers/serviceHelpers');
+const helper = require('../src/Helpers/serviceHelpers');
 const { test } = require('@jest/globals');
 
 const goodCharacterURL = "https://rickandmortyapi.com/api/character/";
