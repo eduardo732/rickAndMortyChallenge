@@ -9,13 +9,16 @@ body{
   display: flex;
   flex-direction: column;
   color: white;
-  margin-top: 5vh;
+  text-align: center;
 }
 .App-logo{
-  height: 40vmin;
-  width: 30%;
-  margin: 0px auto;
+  height: 30vmin;
+  width: 250px;
+  margin: 10px auto;
   pointer-events: none;
+}
+.charCounter{
+  color: white;
 }
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
