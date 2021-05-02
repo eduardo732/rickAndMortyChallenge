@@ -1,5 +1,5 @@
 body{
-  background-color: #23325F!important;
+  background-color: #311604!important;
   height: 100vh;
 }
 .App {
@@ -32,4 +32,19 @@ body{
   to {
     transform: rotate(360deg);
   }
+}
+.defaultContainer{
+  width:500px;
+  display: grid;
+  place-items: center;
+  margin: 200px auto;
+  padding: 10px;
+  border: 1px solid white;
+  box-shadow: 8px 5px 5px rgba(240, 240, 240, 0.767);
+}
+.buttonContainer{
+  margin: 10px auto;
+}
+.buttons{
+  text-align: center;
 }
